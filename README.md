@@ -1,2 +1,2 @@
 # spraff
-multilinugal dictionary
+multilingual dictionary
