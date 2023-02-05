@@ -9,9 +9,9 @@
     "keywords": [
         "nodejs",
         "express",
+        "mongodb",
         "rest",
-        "api",
-        "mongodb"
+        "api"
     ],
     "author": "quentinROTOLO",
     "license": "ISC",

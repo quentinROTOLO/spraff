@@ -11,12 +11,14 @@ exports.create = (req, res) => {
 
     // Create a dictionary
     const dictionary = new Dictionary({
+        id: req.body.id,
         reference_Lang: req.body.reference_lang,
         learning_Lang: req.body.learning_lang,
         learning_Word: req.body.learning_Word,
         learning_Word_Synonyms: req.body.learning_Word_Synonyms,
         reference_Word: req.body.reference_Word,
-        reference_Word_Synonyms: req.body.reference_Word_Synonyms
+        reference_Word_Synonyms: req.body.reference_Word_Synonyms,
+        published: req.body.published
     });
 
     // Save dictionary in the database
@@ -35,7 +37,7 @@ exports.create = (req, res) => {
 // Retrieve all dictionarys from the database.
 exports.findAll = (req, res) => {
     const learning_Word = req.query.learning_Word;
-    var condition = title ? { title: { $regex: new RegExp(title), $options: "i" } } : {};
+    var condition = learning_Word ? { learning_Word: { $regex: new RegExp(learning_Word), $options: "i" } } : {};
 
     dictionary.find(condition)
         .then(data => {

@@ -3,7 +3,7 @@ module.exports = app => {
 
     var router = require("express").Router();
 
-    // Create a new Tutorial
+    // Create a new Dictionary
     router.post("/", dictionary.create);
 
     // Retrieve all dictionary
@@ -12,16 +12,16 @@ module.exports = app => {
     // Retrieve all published dictionary
     router.get("/published", dictionary.findAllPublished);
 
-    // Retrieve a single Tutorial with id
+    // Retrieve a single Dictionary with id
     router.get("/:id", dictionary.findOne);
 
-    // Update a Tutorial with id
+    // Update a Dictionary with id
     router.put("/:id", dictionary.update);
 
-    // Delete a Tutorial with id
+    // Delete a Dictionary with id
     router.delete("/:id", dictionary.delete);
 
-    // Create a new Tutorial
+    // Create a new Dictionary
     router.delete("/", dictionary.deleteAll);
 
     app.use("/api/dictionary", router);
