@@ -1,0 +1,88 @@
+<div *ngIf="viewMode; else editable">
+    <div *ngIf="currentDictionary.id">
+        <h4> Dictionary </h4>
+        <div>
+            <label><strong>Reference Language:</strong></label> {{ currentDictionary.reference_Lang}}
+        </div>
+        <div>
+            <label><strong>Learning Language:</strong></label> {{ currentDictionary.learning_Lang }}
+        </div>
+        <div>
+            <label><strong>Word recently learnt:</strong></label> {{ currentDictionary.learning_Word }}
+        </div>
+        <div>
+            <label><strong>Word's synonyms:</strong></label> {{ currentDictionary.learning_Word_Synonyms }}
+        </div>
+        <div>
+            <label><strong>Translation:</strong></label> {{ currentDictionary.reference_Word }}
+        </div>
+        <div>
+            <label><strong>Translation synonyms:</strong></label> {{ currentDictionary.reference_Word_Synonyms }}
+        </div>
+
+        <a class="badge badge-warning" routerLink="/dictionary/{{ currentDictionary.id }}">
+      Edit
+    </a>
+    </div>
+
+    <div *ngIf="!currentDictionary">
+        <br />
+        <p>Please click on a Dictionary...</p>
+    </div>
+</div>
+
+<ng-template #editable>
+    <div *ngIf="currentDictionary.id" class="edit-form">
+        <h4>Dictionary</h4>
+        <form>
+            <div class="form-group">
+                <label for="referenceLanguage">Reference Language </label>
+                <input type="text" class="form-control" id="referenceLanguage" [(ngModel)]="currentDictionary.reference_Lang" name="referenceLanguage" />
+            </div>
+            <div class="form-group">
+                <label for="learningLanguage"> Learning Language </label>
+                <input type="text" class="form-control" id="learningLanguage" [(ngModel)]="currentDictionary.learning_Lang" name="learningLanguage" />
+            </div>
+            <div class="form-group">
+                <label for="learningWord"> Word recently learnt  </label>
+                <input type="text" class="form-control" id="learningWord" [(ngModel)]="currentDictionary.learning_Word" name="learningWord" />
+            </div>
+            <div class="form-group">
+                <label for="learningWordSynonyms"> Word's synonyms:  </label>
+                <input type="text" class="form-control" id="learningWordSynonyms" [(ngModel)]="currentDictionary.learning_Word_Synonyms" name="learningWordSynonyms" />
+            </div>
+            <div class="form-group">
+                <label for="referenceWord"> Translation:  </label>
+                <input type="text" class="form-control" id="referenceWord" [(ngModel)]="currentDictionary.reference_Word" name="referenceWord" />
+            </div>
+            <div class="form-group">
+                <label for="referenceWordSynonyms"> Translation synonyms:  </label>
+                <input type="text" class="form-control" id="referenceWordSynonyms" [(ngModel)]="currentDictionary.reference_Word_Synonyms" name="referenceWordSynonyms" />
+            </div>
+            <div class="form-group">
+                <label><strong>Status:</strong></label> {{ currentDictionary.published ? "Published" : "Pending" }}
+            </div>
+        </form>
+
+        <button class="badge badge-primary mr-2" *ngIf="currentDictionary.published" (click)="updatePublished(false)">
+      UnRecord
+    </button>
+        <button *ngIf="!currentDictionary.published" class="badge badge-primary mr-2" (click)="updatePublished(true)">
+      Record
+    </button>
+
+        <button class="badge badge-danger mr-2" (click)="updateDictionary()">
+      Delete
+    </button>
+
+        <button type="submit" class="badge badge-success mb-2" (click)="updateDictionary()">
+      Update
+    </button>
+        <p>{{ message }}</p>
+    </div>
+
+    <div *ngIf="!currentDictionary.id">
+        <br />
+        <p>Cannot access this Dictionary...</p>
+    </div>
+</ng-template>

@@ -1,0 +1,33 @@
+<div>
+    <div class="submit-form">
+        <div *ngIf="!submitted">
+            <div class="form-group">
+                <label for="learningLang"> Learning Language: </label>
+                <input type="text" class="form-control" id="learningLang" required [(ngModel)]="dictionary.learning_Word" name="learningLang" />
+            </div>
+            <div class="form-group">
+                <label for="learningWord"> Word recently learnt: </label>
+                <input type="text" class="form-control" id="learningWord" required [(ngModel)]="dictionary.learning_Word" name="learningWord" />
+            </div>
+            <div class="form-group">
+                <label for="learningWordSynonyms"> Word synonyms: </label>
+                <input type="text" class="form-control" id="learningWordSynonyms" [(ngModel)]="dictionary.learning_Word_Synonyms" name="learningWordSynonyms" />
+            </div>
+            <div class="form-group">
+                <label for="referenceWord"> Word's translation: </label>
+                <input type="text" class="form-control" id="referenceWord" required [(ngModel)]="dictionary.reference_Word" name="referenceWord" />
+            </div>
+            <div class="form-group">
+                <label for="referenceWordSynonyms"> Word synonyms: </label>
+                <input type="text" class="form-control" id="referenceWordSynonyms" [(ngModel)]="dictionary.reference_Word_Synonyms" name="referenceWordSynonyms" />
+            </div>
+
+            <button (click)="saveDictionary()" class="btn btn-success">Submit</button>
+        </div>
+
+        <div *ngIf="submitted">
+            <h4>Dictionary was submitted successfully!</h4>
+            <button class="btn btn-success" (click)="newDictionary()">Add</button>
+        </div>
+    </div>
+</div>
