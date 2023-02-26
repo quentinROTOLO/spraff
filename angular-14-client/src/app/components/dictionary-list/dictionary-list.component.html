@@ -5,20 +5,20 @@
             <div class="input-group-append">
                 <button class="btn btn-outline-secondary" (click)="searchReferenceWord()">
           Search a reference word 
-        </button>
+                </button>
             </div>
         </div>
     </div>
     <div class="col-md-6">
         <h4>Dictionary List</h4>
         <ul class="list-group">
-            <li class="list-group-item" *ngFor="let dictionary of dictionaries; let i = index" [class.active]="i == currentIndex" (click)="setActiveDictionary(dictionary, i)">
+            <li class="list-group-item" *ngFor="let dictionary of dictionaries; let i = index" [class.active]="i === currentIndex" (click)="setActiveDictionary(dictionary, i)">
                 {{ dictionary.reference_Word }}
             </li>
         </ul>
         <button class="m-3 btn btn-sm btn-danger" (click)="removeAllDictionaries()">
       Remove All
-    </button>
+        </button>
     </div>
     <div class="col-md-6">
         <app-dictionary-details [viewMode]="true" [currentDictionary]="currentDictionary"></app-dictionary-details>

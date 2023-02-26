@@ -8,11 +8,12 @@ Afin de pouvoir entrer/organiser/jouer avec les mots selon cette langue cible.
 
 En tant qu'utilisateur  
 Je souhaite pouvoir définir une langue de référence 
-Afin de pouvoir entrer/organiser/jouer les mots appris dans la langue cible en fonction de cette langue de référence.
+Afin de pouvoir entrer/organiser/jouer les mots appris dans la langue cible selon cette langue de référence.
 
 En tant qu'utilisateur  
 Je souhaite pouvoir ajouter des mots + leur traduction ainsi que d'éventuels synonymes dans ma base de données
 Afin de pouvoir consulter/jouer avec mots + syonymes.
+
 
 En tant qu'utilisateur
 Je souhaite pouvoir consulter aisément tous les mots entrés dans ma base de données
@@ -20,7 +21,7 @@ Afin de retrouver/lire et d'apprendre facilement tous ces mots.
 
 En tant qu'utilisateur
 Je souhaite pouvoir modifier/mettre à jour certains mots entrés
-Afin de pouvoir changer des entrées suite à une erreur. 
+Afin de pouvoir changer des données entrées par erreur. 
 
 En tant qu'utilisateur
 Je souhaite pouvoir supprimer certains mots entrés

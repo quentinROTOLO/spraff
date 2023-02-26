@@ -37,6 +37,7 @@ export class AddDictionaryComponent {
       .subscribe({
         next: (res) => {
           console.log(res);
+          // this.dictionary.id === this.dictionary.id + 1; 
           this.submitted = true;
         },
         error: (e) => console.error(e)

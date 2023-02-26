@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Dictionary } from '../models/dictionary.model';
 
-const baseUrl = 'http://localhost:8080/api/dictionarys';
+const baseUrl = 'http://localhost:8080/api/dictionary';
 
 @Injectable({
   providedIn: 'root'
