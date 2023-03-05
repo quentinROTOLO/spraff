@@ -21,7 +21,7 @@ module.exports = app => {
     // Delete a Dictionary with id
     router.delete("/:id", dictionary.delete);
 
-    // Create a new Dictionary
+    // Delete all Dictionary
     router.delete("/", dictionary.deleteAll);
 
     app.use("/api/dictionary", router);

@@ -10,7 +10,6 @@ import { DictionaryService } from 'src/app/services/dictionary.service';
 export class AddDictionaryComponent {
 
   dictionary: Dictionary = {
-    id: 0,
     reference_Lang: '',
     learning_Lang: '',
     learning_Word: '',
@@ -37,7 +36,6 @@ export class AddDictionaryComponent {
       .subscribe({
         next: (res) => {
           console.log(res);
-          // this.dictionary.id === this.dictionary.id + 1; 
           this.submitted = true;
         },
         error: (e) => console.error(e)
@@ -47,7 +45,6 @@ export class AddDictionaryComponent {
   newDictionary(): void {
     this.submitted = false;
     this.dictionary = {
-      id: 0,
       reference_Lang: '',
       learning_Lang: '',
       learning_Word: '',

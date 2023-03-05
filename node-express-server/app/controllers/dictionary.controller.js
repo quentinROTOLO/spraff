@@ -4,21 +4,20 @@ const Dictionary = db.dictionary;
 // Create and Save a new dictionary
 exports.create = (req, res) => {
     // Validate request
-    if (!req.body.title) {
+    if (!req.body.learning_Word) {
         res.status(400).send({ message: "Content can not be empty!" });
         return;
     }
 
     // Create a dictionary
     const dictionary = new Dictionary({
-        id: req.body.id,
         reference_Lang: req.body.reference_lang,
         learning_Lang: req.body.learning_lang,
         learning_Word: req.body.learning_Word,
         learning_Word_Synonyms: req.body.learning_Word_Synonyms,
         reference_Word: req.body.reference_Word,
         reference_Word_Synonyms: req.body.reference_Word_Synonyms,
-        published: req.body.published
+        published: req.body.published ? req.body.published : false
     });
 
     // Save dictionary in the database
@@ -39,7 +38,7 @@ exports.findAll = (req, res) => {
     const learning_Word = req.query.learning_Word;
     var condition = learning_Word ? { learning_Word: { $regex: new RegExp(learning_Word), $options: "i" } } : {};
 
-    dictionary.find(condition)
+    Dictionary.find(condition)
         .then(data => {
             res.send(data);
         })
@@ -54,7 +53,7 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
     const id = req.params.id;
 
-    dictionary.findById(id)
+    Dictionary.findById(id)
         .then(data => {
             if (!data)
                 res.status(404).send({ message: "Not found dictionary with id " + id });
@@ -77,7 +76,7 @@ exports.update = (req, res) => {
 
     const id = req.params.id;
 
-    dictionary.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
+    Dictionary.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
         .then(data => {
             if (!data) {
                 res.status(404).send({
@@ -96,7 +95,7 @@ exports.update = (req, res) => {
 exports.delete = (req, res) => {
     const id = req.params.id;
 
-    dictionary.findByIdAndRemove(id, { useFindAndModify: false })
+    Dictionary.findByIdAndRemove(id, { useFindAndModify: false })
         .then(data => {
             if (!data) {
                 res.status(404).send({
@@ -117,7 +116,7 @@ exports.delete = (req, res) => {
 
 // Delete all dictionarys from the database.
 exports.deleteAll = (req, res) => {
-    dictionary.deleteMany({})
+    Dictionary.deleteMany({})
         .then(data => {
             res.send({
                 message: `${data.deletedCount} dictionarys were deleted successfully!`
@@ -132,7 +131,7 @@ exports.deleteAll = (req, res) => {
 
 // Find all published dictionarys
 exports.findAllPublished = (req, res) => {
-    dictionary.find({ published: true })
+    Dictionary.find({ published: true })
         .then(data => {
             res.send(data);
         })

@@ -19,7 +19,9 @@
         <div>
             <label><strong>Translation synonyms:</strong></label> {{ currentDictionary.reference_Word_Synonyms }}
         </div>
-
+        <div>
+            <label><strong> Status:</strong></label> {{ currentDictionary.published ? "Published" : "Pending"}}
+        </div>
         <a class="badge badge-warning" routerLink="/dictionary/{{ currentDictionary.id }}">
       Edit
     </a>
