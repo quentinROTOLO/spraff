@@ -11,8 +11,8 @@ exports.create = (req, res) => {
 
     // Create a dictionary
     const dictionary = new Dictionary({
-        reference_Lang: req.body.reference_lang,
-        learning_Lang: req.body.learning_lang,
+        reference_Lang: req.body.reference_Lang,
+        learning_Lang: req.body.learning_Lang,
         learning_Word: req.body.learning_Word,
         learning_Word_Synonyms: req.body.learning_Word_Synonyms,
         reference_Word: req.body.reference_Word,
