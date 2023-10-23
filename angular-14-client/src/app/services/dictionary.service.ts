@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Dictionary } from '../models/dictionary.model';
+import { AngularFireDatabase} from '@angular/fire/compat/database';
 
 const baseUrl = 'http://localhost:8080/api/dictionary';
 
@@ -10,7 +11,7 @@ const baseUrl = 'http://localhost:8080/api/dictionary';
 })
 export class DictionaryService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private fireDb: AngularFireDatabase) { }
 
   getAll(): Observable<Dictionary[]> {
     return this.http.get<Dictionary[]>(baseUrl);
