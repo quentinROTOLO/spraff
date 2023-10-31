@@ -19,6 +19,8 @@ export class AddDictionaryComponent {
     published: false
   };
   submitted = false;
+// Observable<any> dictionary = db.object('tutorial').valueChanges();
+
 
   constructor(private dictionaryService: DictionaryService) { }
 
@@ -34,11 +36,11 @@ export class AddDictionaryComponent {
 
     this.dictionaryService.create(data)
       .subscribe({
-        next: (res) => {
+        next: (res: any) => {
           console.log(res);
           this.submitted = true;
         },
-        error: (e) => console.error(e)
+        error: (e: any) => console.error(e)
       });
   }
 

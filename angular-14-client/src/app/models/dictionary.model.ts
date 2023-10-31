@@ -1,5 +1,5 @@
 export class Dictionary {
-        id?: Number; 
+        key?: string | null; 
         reference_Lang?: String;
         learning_Lang?: String;
         learning_Word?: String;
