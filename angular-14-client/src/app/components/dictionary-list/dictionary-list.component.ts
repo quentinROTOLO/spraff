@@ -19,6 +19,8 @@ export class DictionaryListComponent implements OnInit {
 
   ngOnInit(): void {
     this.retrieveDictionary();
+    this.dictionaryService.getAll();
+    // this.dictionaryService.getOne('1');
   }
 
   retrieveDictionary(): void {
