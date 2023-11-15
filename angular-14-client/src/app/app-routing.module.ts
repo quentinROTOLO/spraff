@@ -7,7 +7,7 @@ import { AddDictionaryComponent } from './components/add-dictionary/add-dictiona
 const routes: Routes = [
   { path: '', redirectTo: 'dictionary', pathMatch: 'full' },
   { path: 'dictionary', component: DictionaryListComponent },
-  { path: 'dictionary/:id', component: DictionaryDetailsComponent },
+  { path: 'dictionary/:key', component: DictionaryDetailsComponent },
   { path: 'add', component: AddDictionaryComponent }
 ];
 

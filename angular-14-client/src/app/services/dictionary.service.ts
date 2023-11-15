@@ -1,48 +1,61 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { Dictionary } from '../models/dictionary.model';
-
-const baseUrl = 'http://localhost:8080/api/dictionary';
+import {
+  AngularFireDatabase,
+  AngularFireList,
+} from '@angular/fire/compat/database';
+import { Observable, map } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DictionaryService {
+  private dbPath = '/dictionaries';
+  dictionariesRef: AngularFireList<Dictionary>;
+  items: Observable<any[]>;
 
-  constructor(private http: HttpClient) { }
-
-  getAll(): Observable<Dictionary[]> {
-    return this.http.get<Dictionary[]>(baseUrl);
+  constructor(private angularFireDb: AngularFireDatabase) {
+    this.dictionariesRef = angularFireDb.list(this.dbPath);
+    this.items = this.angularFireDb.list(this.dbPath).valueChanges();
   }
 
-  get(id: any): Observable<Dictionary> {
-    return this.http.get<Dictionary>(`${baseUrl}/${id}`);
+  getAll(): AngularFireList<Dictionary> {
+    console.log(this.dictionariesRef);
+    return this.dictionariesRef;
   }
 
-  create(data: any): Observable<any> {
-    return this.http.post(baseUrl, data);
+  getOne(key: string): Observable<Dictionary | null> {
+    console.log(this.items);
+    // Use snapshotChanges() to get a list of changes
+    return this.dictionariesRef.snapshotChanges().pipe(
+      map((changes) => {
+        // Find the specific change that matches the key
+        const change = changes.find((c) => c.key === key);
+
+        // If a change is found, return the corresponding data, otherwise, return null
+        if (change) {
+          const data = change.payload.val() as Dictionary;
+          return { key: change.key, ...data };
+        } else {
+          return null;
+        }
+      })
+    );
   }
 
-  update(id: any, data: any): Observable<any> {
-    return this.http.put(`${baseUrl}/${id}`, data);
+  create(dictionary: Dictionary): any {
+    return this.dictionariesRef.push(dictionary);
   }
 
-  delete(id: any): Observable<any> {
-    return this.http.delete(`${baseUrl}/${id}`);
+  update(key: string, update: any): Promise<void> {
+    return this.dictionariesRef.update(key, update);
   }
 
-  deleteAll(): Observable<any> {
-    return this.http.delete(baseUrl);
+  delete(key: string): Promise<void> {
+    return this.dictionariesRef.remove(key);
   }
 
-  findByLearningWord(learning_Word: any): Observable<Dictionary[]> {
-    return this.http.get<Dictionary[]>(`${baseUrl}?learning_Word=${learning_Word}`);
+  deleteAll(): Promise<void> {
+    return this.dictionariesRef.remove();
   }
-
-  findByReferenceWord(reference_Word: any): Observable<Dictionary[]> {
-    return this.http.get<Dictionary[]>(`${baseUrl}?reference_Word=${reference_Word}`);
-  }
-
 }
-

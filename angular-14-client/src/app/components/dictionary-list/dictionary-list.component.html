@@ -21,6 +21,6 @@
         </button>
     </div>
     <div class="col-md-6">
-        <app-dictionary-details [viewMode]="true" [currentDictionary]="currentDictionary"></app-dictionary-details>
+        <app-dictionary-details (refreshList)="currentDictionary" [dictionary]="currentDictionary"></app-dictionary-details>
     </div>
 </div>
