@@ -3,7 +3,7 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
-    "outDir": "./dist/out-tsc",
+    "outDir": "../angularDist/spraff",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitOverride": true,

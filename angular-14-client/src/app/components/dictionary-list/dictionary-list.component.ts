@@ -1,41 +1,44 @@
 import { Component, OnInit } from '@angular/core';
+import { map } from 'rxjs';
 import { Dictionary } from 'src/app/models/dictionary.model';
 import { DictionaryService } from 'src/app/services/dictionary.service';
 
 @Component({
   selector: 'app-dictionary-list',
   templateUrl: './dictionary-list.component.html',
-  styleUrls: ['./dictionary-list.component.css']
+  styleUrls: ['./dictionary-list.component.css'],
 })
 export class DictionaryListComponent implements OnInit {
-
   dictionaries?: Dictionary[];
-  currentDictionary: Dictionary = {};
+  currentDictionary?: Dictionary;
   currentIndex = -1;
-  referenceWord= '';
-  learningWord = ''; 
+  referenceWord = '';
+  learningWord = '';
 
-  constructor(private dictionaryService: DictionaryService) { }
+  constructor(private dictionaryService: DictionaryService) {}
 
   ngOnInit(): void {
     this.retrieveDictionary();
+    this.dictionaryService.getAll();
+    // this.dictionaryService.getOne('1');
   }
 
   retrieveDictionary(): void {
-    this.dictionaryService.getAll()
-      .subscribe({
-        next: (data) => {
-          this.dictionaries = data;
-          console.log(data);
-        },
-        error: (e) => console.error(e)
-      });
+    this.dictionaryService.getAll().snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c =>
+          ({ key: c.payload.key, ...c.payload.val() })
+        )
+      )
+    ).subscribe(data => {
+      this.dictionaries = data;
+    });
   }
 
   refreshList(): void {
-    this.retrieveDictionary();
-    this.currentDictionary = {};
+    this.currentDictionary = undefined;
     this.currentIndex = -1;
+    this.retrieveDictionary();
   }
 
   setActiveDictionary(dictionary: Dictionary, index: number): void {
@@ -45,41 +48,17 @@ export class DictionaryListComponent implements OnInit {
 
   removeAllDictionaries(): void {
     this.dictionaryService.deleteAll()
-      .subscribe({
-        next: (res) => {
-          console.log(res);
-          this.refreshList();
-        },
-        error: (e) => console.error(e)
-      });
+      .then(() => this.refreshList())
+      .catch(err => console.log(err));
   }
 
   searchReferenceWord(): void {
     this.currentDictionary = {};
     this.currentIndex = -1;
-
-    this.dictionaryService.findByReferenceWord(this.referenceWord)
-      .subscribe({
-        next: (data) => {
-          this.dictionaries = data;
-          console.log(data);
-        },
-        error: (e) => console.error(e)
-      });
   }
 
-searchLearningWord(): void {
+  searchLearningWord(): void {
     this.currentDictionary = {};
     this.currentIndex = -1;
-
-    this.dictionaryService.findByLearningWord(this.learningWord)
-      .subscribe({
-        next: (data) => {
-          this.dictionaries = data;
-          console.log(data);
-        },
-        error: (e) => console.error(e)
-      });
   }
-
 }
