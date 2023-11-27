@@ -9,9 +9,9 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AddDictionaryComponent } from './components/add-dictionary/add-dictionary.component'
-import { DictionaryDetailsComponent } from './components/dictionary-details/dictionary-details.component';
-import { DictionaryListComponent } from './components/dictionary-list/dictionary-list.component';
+import { AddDictionaryComponent } from '../protected/add-dictionary/add-dictionary.component'
+import { DictionaryDetailsComponent } from '../protected/dictionary-details/dictionary-details.component';
+import { DictionaryListComponent } from '../protected/dictionary-list/dictionary-list.component';
 
 @NgModule({
   declarations: [

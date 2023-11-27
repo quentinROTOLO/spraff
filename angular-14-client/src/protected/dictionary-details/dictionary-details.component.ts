@@ -6,9 +6,9 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { DictionaryService } from '../../../core/services/dictionary.service';
+import { DictionaryService } from '../../core/services/dictionary.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Dictionary } from '../../../shared/models/dictionary.model';
+import { Dictionary } from '../../shared/models/dictionary.model';
 
 @Component({
   selector: 'app-dictionary-details',

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs';
-import { Dictionary } from '../../../shared/models/dictionary.model';
-import { DictionaryService } from '../../../core/services/dictionary.service';
+import { Dictionary } from '../../shared/models/dictionary.model';
+import { DictionaryService } from '../../core/services/dictionary.service';
 
 @Component({
   selector: 'app-dictionary-list',
