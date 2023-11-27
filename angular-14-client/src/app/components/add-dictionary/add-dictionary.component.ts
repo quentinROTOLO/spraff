@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Dictionary } from 'src/shared/models/dictionary.model';
-import { DictionaryService } from 'src/app/services/dictionary.service';
+import { DictionaryService } from 'src/core/services/dictionary.service';
 
 @Component({
   selector: 'app-add-dictionary',

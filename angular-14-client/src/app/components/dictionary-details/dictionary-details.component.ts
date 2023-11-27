@@ -6,7 +6,7 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { DictionaryService } from '../../services/dictionary.service';
+import { DictionaryService } from '../../../core/services/dictionary.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Dictionary } from '../../../shared/models/dictionary.model';
 
