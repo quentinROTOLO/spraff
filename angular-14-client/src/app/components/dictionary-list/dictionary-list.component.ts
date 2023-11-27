@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs';
-import { Dictionary } from '../../models/dictionary.model';
+import { Dictionary } from '../../../shared/models/dictionary.model';
 import { DictionaryService } from '../../services/dictionary.service';
 
 @Component({

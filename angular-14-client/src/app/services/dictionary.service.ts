@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Dictionary } from '../models/dictionary.model';
+import { Dictionary } from '../../shared/models/dictionary.model';
 import {
   AngularFireDatabase,
   AngularFireList,

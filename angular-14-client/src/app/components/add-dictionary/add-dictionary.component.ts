@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Dictionary } from 'src/app/models/dictionary.model';
+import { Dictionary } from 'src/shared/models/dictionary.model';
 import { DictionaryService } from 'src/app/services/dictionary.service';
 
 @Component({
