@@ -9,14 +9,14 @@ import { Router } from '@angular/router';
 })
 export class LoginFormComponent implements OnInit {
 
-  appLoginForm: FormGroup;
+  appLoginForm: FormGroup | undefined;
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private authService: AuthService
+    // private authService: AuthService
   ) {
-    this.appLoginForm = appLoginForm; 
+    // this.appLoginForm = appLoginForm; 
   }
 
   ngOnInit() {
