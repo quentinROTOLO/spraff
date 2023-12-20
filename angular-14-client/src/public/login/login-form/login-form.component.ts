@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/core/services/auth.service';
 
 @Component({
   selector: 'app-login-form',
@@ -9,14 +10,13 @@ import { Router } from '@angular/router';
 })
 export class LoginFormComponent implements OnInit {
 
-  appLoginForm: FormGroup | undefined;
+  appLoginForm!: FormGroup;
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    // private authService: AuthService
+    private authService: AuthService
   ) {
-    // this.appLoginForm = appLoginForm; 
   }
 
   ngOnInit() {
@@ -33,16 +33,15 @@ export class LoginFormComponent implements OnInit {
     });
   }
 
-  // get email() { return this.loginForm.get('email') }
-  // get password() { return this.loginForm.get('password') }
+  get email() { return this.appLoginForm.get('email') }
+  get password() { return this.appLoginForm.get('password') }
 
-  // submit(): void {
-  //   this.authService
-  //     .login(this.email?.value, this.password?.value)
-  //     .subscribe(
-  //       _ => this.router.navigate(['/app/dashboard']),
-  //       _ => this.loginForm.reset()
-  //     );
-  // }
-
+  submit(): void {
+    this.authService
+      .login(this.email?.value, this.password?.value)
+      .subscribe(
+        _ => this.router.navigate(['/app/dashboard']),
+        _ => this.appLoginForm.reset()
+      );
+  }
 }
