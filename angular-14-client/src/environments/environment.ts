@@ -3,10 +3,13 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
+  production: true,
   firebase: {
     apiKey: 'AIzaSyBTPX2fBzp4kn04n7kELrj5s9tFPG36BPw',
-    authDomain: 'spraff-ff1e8.firebaseapp.com',
+    auth: {
+      authDomain: 'spraff-ff1e8.firebaseapp.com',
+      baseURL: ''
+    }, 
     databaseURL:
       'https://spraff-ff1e8-default-rtdb.europe-west1.firebasedatabase.app',
     projectId: 'spraff-ff1e8',
