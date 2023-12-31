@@ -25,7 +25,7 @@ export class AuthService {
     private loaderService: LoaderService,
     private usersService: UserService,
     private errorService: ErrorService, 
-    private toastrService; ToastrService
+    private toastrService: ToastrService
   ) { }
 
   public login(email: string, password: string): Observable<User | null> {

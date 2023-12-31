@@ -6,10 +6,7 @@ export const environment = {
   production: true,
   firebase: {
     apiKey: 'AIzaSyBTPX2fBzp4kn04n7kELrj5s9tFPG36BPw',
-    auth: {
-      authDomain: 'spraff-ff1e8.firebaseapp.com',
-      baseURL: ''
-    }, 
+    authDomain: 'spraff-ff1e8.firebaseapp.com',
     databaseURL:
       'https://spraff-ff1e8-default-rtdb.europe-west1.firebasedatabase.app',
     projectId: 'spraff-ff1e8',
