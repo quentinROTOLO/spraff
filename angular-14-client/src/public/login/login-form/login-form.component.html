@@ -7,10 +7,10 @@
       autocorrect="off" autocomplete="off" />
     <small *ngIf="email && email.errors && email.dirty" class="form-text text-muted">
       <span [hidden]="!email.errors['required']">
-        Email requis.
+        Email is required.
       </span>
       <span [hidden]="!email.errors['email']">
-        Entrez une adresse email valide.
+        Please enter a correct email address.
       </span>
     </small>
   </div>
@@ -21,13 +21,13 @@
       placeholder="Votre mot de passe" />
     <small *ngIf="password && password.errors && password.dirty" class="form-text text-muted">
       <span [hidden]="!password.errors['required']">
-        Mot de passe requis.
+        Password is required.
       </span>
       <span [hidden]="!password.errors['minlength']">
-        Le mot de passe doit faire plus de 6 caractères.
+        Password should contain at least 6 characters.
       </span>
       <span [hidden]="!password.errors['maxlength']">
-        Le mot de passe doit faire moins de 20 caractères.
+        Password must under 20 characters.
       </span>
     </small>
   </div>
@@ -35,7 +35,15 @@
   <p class="text-center py-3">
     <button type="submit" class="btn" [disabled]="!appLoginForm.valid"
       [ngClass]="{'btn-success':appLoginForm.valid,'btn-default':!appLoginForm.valid}">
-      Connexion
+      Connection
     </button>
   </p>
+
+  <p class="text-center py-3">
+    <button type="submit" class="btn" [disabled]="!appLoginForm.valid"
+      [ngClass]="{'btn-success':appLoginForm.valid,'btn-default':!appLoginForm.valid}">
+      Create account
+    </button>
+  </p>
+
 </form>

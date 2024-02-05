@@ -37,11 +37,7 @@ export class LoginFormComponent implements OnInit {
   get password() { return this.appLoginForm.get('password') }
 
   submit(): void {
-    this.authService
-      .login(this.email?.value, this.password?.value)
-      .subscribe(
-        _ => this.router.navigate(['/app/dashboard']),
-        _ => this.appLoginForm.reset()
-      );
+    if (!this.authService.isLoggedIn) {
+      this.authService.signIn(this.email, this.password)
+    }
   }
-}
