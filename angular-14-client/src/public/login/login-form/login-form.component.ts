@@ -41,3 +41,4 @@ export class LoginFormComponent implements OnInit {
       this.authService.signIn(this.email, this.password)
     }
   }
+}
